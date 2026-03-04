@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0f;
+  --foreground: #e8e8ed;
+  --accent-green: #22c55e;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --neon-green: #00ff88;
+  --neon-blue: #00d4ff;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Animated gradient background */
+.hero-gradient {
+  background: radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(34, 197, 94, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* === Sci-Fi Card Frame === */
+.sci-fi-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(15, 25, 20, 0.95), rgba(10, 15, 25, 0.95));
+  border: 1px solid rgba(0, 255, 136, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.sci-fi-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), transparent 40%, transparent 60%, rgba(0, 212, 255, 0.3));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.sci-fi-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0deg 340deg, rgba(0, 255, 136, 0.08) 340deg 360deg);
+  animation: sci-fi-rotate 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes sci-fi-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Corner accents */
+.sci-fi-corners {
+  position: relative;
+}
+
+.sci-fi-corners::before,
+.sci-fi-corners::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.sci-fi-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid rgba(0, 255, 136, 0.6);
+  border-left: 2px solid rgba(0, 255, 136, 0.6);
+  border-radius: 4px 0 0 0;
+}
+
+.sci-fi-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.6);
+  border-right: 2px solid rgba(0, 212, 255, 0.6);
+  border-radius: 0 0 4px 0;
+}
+
+/* Neon glow text */
+.neon-green-text {
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.neon-blue-text {
+  color: #00d4ff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+/* Card hover glow */
+.card-glow-green:hover {
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.12), 0 0 80px rgba(34, 197, 94, 0.06);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.card-glow-purple:hover {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.12), 0 0 80px rgba(139, 92, 246, 0.06);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle pulse for shield icon */
+@keyframes shield-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.shield-pulse {
+  animation: shield-pulse 3s ease-in-out infinite;
+}
+
+/* Halo ring for patron avatar */
+.halo-ring {
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.6), 0 0 12px rgba(139, 92, 246, 0.3);
+}
+
+/* Green Shield verified badge */
+.green-shield {
+  color: #22c55e;
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.4));
+}
+
+/* AI Score ring */
+@keyframes score-fill {
+  from { stroke-dashoffset: 314; }
+}
+
+.score-ring-bg {
+  stroke: rgba(255, 255, 255, 0.06);
+}
+
+.score-ring-fill {
+  stroke: #00ff88;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.4));
+  transition: stroke-dashoffset 1s ease-out;
+}
+
+/* Timeline connector */
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot.active::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 255, 136, 0.4);
+  animation: timeline-pulse 2s ease-in-out infinite;
+}
+
+@keyframes timeline-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Diagonal stripes accent */
+.diagonal-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(0, 255, 136, 0.15) 4px,
+    rgba(0, 255, 136, 0.15) 6px
+  );
+}
+
+/* Tag styles */
+.tag-green {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: #00ff88;
+}
+
+.tag-blue {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  color: #00d4ff;
+}
+
+.tag-purple {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  color: #a78bfa;
+}
+
+/* CRT scanline effect for terminal */
+.crt-scanlines {
+  position: relative;
+}
+
+.crt-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 136, 0.015) 2px,
+    rgba(0, 255, 136, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+.crt-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.02) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10;
+  animation: crt-flicker 0.1s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.85; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.85; }
+}
+
+/* CRT glow border */
+.crt-glow {
+  box-shadow:
+    inset 0 0 30px rgba(0, 255, 136, 0.03),
+    0 0 20px rgba(0, 255, 136, 0.05);
+}
+
+/* Terminal flash for new log entry */
+@keyframes flash-in {
+  0% { background-color: rgba(0, 255, 136, 0.12); }
+  100% { background-color: transparent; }
+}
+
+.animate-flash {
+  animation: flash-in 1.5s ease-out;
+}
+
+/* Scrollbar for terminal */
+.font-mono::-webkit-scrollbar {
+  width: 4px;
+}
+.font-mono::-webkit-scrollbar-track {
+  background: transparent;
+}
+.font-mono::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 136, 0.15);
+  border-radius: 2px;
+}
