@@ -47,6 +47,7 @@ export const MOCK_INTENTS: IntentAsset[] = [
     aiScore: 94,
     tags: ['#Longevity', '#AI-Bio', '#Tier-1'],
     supporterCount: 2500,
+    boostScore: 850,
     trendingRank: 1,
     resourceAsks: [
       { type: 'compute', description: 'H100 GPU Hours for molecular simulation', quantity: '500 H100 Hrs' },
@@ -115,6 +116,7 @@ export const MOCK_INTENTS: IntentAsset[] = [
     aiScore: 87,
     tags: ['#Neuroscience', '#AI-Bio', '#Tier-1'],
     supporterCount: 890,
+    boostScore: 620,
     trendingRank: 3,
     resourceAsks: [
       { type: 'compute', description: 'A100 GPU for model training', quantity: '1000 A100 Hrs' },
@@ -182,6 +184,7 @@ export const MOCK_INTENTS: IntentAsset[] = [
     aiScore: 79,
     tags: ['#Genomics', '#DeSci', '#Tier-2'],
     supporterCount: 340,
+    boostScore: 280,
     resourceAsks: [
       { type: 'equipment', description: 'Lab equipment rental', quantity: '6 months access' },
     ],

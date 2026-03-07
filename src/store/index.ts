@@ -9,6 +9,7 @@ interface AppState {
   currentUser: {
     role: UserRole;
     profile?: ScientistProfile;
+    auraCredits: number; // Task 6: 用户的 Aura 积分
   };
   intents: IntentAsset[];
   scientists: ScientistProfile[];
@@ -24,10 +25,11 @@ interface AppState {
   submitProof: (intentId: string, milestoneId: string) => void;
   verifyMilestone: (intentId: string, milestoneId: string) => void;
   addLog: (log: Omit<ActivityLog, 'id' | 'timestamp'>) => void;
+  boostIntent: (intentId: string, amount: number) => void; // Task 6: Burn-to-Boost
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
-  currentUser: { role: 'guest' },
+  currentUser: { role: 'guest', auraCredits: 1000 },
   intents: MOCK_INTENTS,
   scientists: MOCK_SCIENTISTS,
   activityLogs: MOCK_ACTIVITY_LOGS,
@@ -190,4 +192,35 @@ export const useAppStore = create<AppState>((set, get) => ({
       ...s.activityLogs,
     ],
   })),
+
+  // Task 6: Burn-to-Boost
+  boostIntent: (intentId, amount) => set((s) => {
+    const intent = s.intents.find(i => i.id === intentId);
+    if (!intent || s.currentUser.auraCredits < amount) return s;
+
+    return {
+      currentUser: {
+        ...s.currentUser,
+        auraCredits: s.currentUser.auraCredits - amount,
+      },
+      intents: s.intents.map(i => {
+        if (i.id !== intentId) return i;
+        return {
+          ...i,
+          boostScore: (i.boostScore || 0) + amount,
+        };
+      }),
+      activityLogs: [
+        {
+          id: logId(),
+          timestamp: ts(),
+          type: 'intent_published' as const,
+          message: `🔥 +${amount} Aura boost to ${intent.ticker}`,
+          ticker: intent.ticker,
+          intentId: intent.id,
+        },
+        ...s.activityLogs,
+      ],
+    };
+  }),
 }));

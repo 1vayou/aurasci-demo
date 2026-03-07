@@ -64,6 +64,22 @@ body {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
+/* === Boost Particle Animation === */
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px) scale(1.5);
+  }
+}
+
+.animate-float-up {
+  animation: floatUp 1s ease-out forwards;
+}
+
 /* === Sci-Fi Card Frame === */
 .sci-fi-card {
   position: relative;

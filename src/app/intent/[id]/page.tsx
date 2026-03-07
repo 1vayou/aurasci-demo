@@ -19,6 +19,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useAppStore } from "@/store";
+import BoostButton from "@/components/BoostButton";
 import type { Milestone, ResourceAsk } from "@/types";
 
 /* ---- Circular Score Ring ---- */
@@ -211,8 +212,10 @@ export default function IntentDetail() {
   const router = useRouter();
   const intents = useAppStore((s) => s.intents);
   const scientists = useAppStore((s) => s.scientists);
+  const currentUser = useAppStore((s) => s.currentUser);
   const addPatronage = useAppStore((s) => s.addPatronage);
   const updateMilestone = useAppStore((s) => s.updateMilestone);
+  const boostIntent = useAppStore((s) => s.boostIntent);
 
   const intent = useMemo(
     () => intents.find((i) => i.id === params.id),
@@ -399,6 +402,16 @@ export default function IntentDetail() {
                   goal={intent.fundingGoalUSDC}
                   size={180}
                 />
+
+                {/* Boost Button */}
+                <div className="w-full">
+                  <BoostButton
+                    intentId={intent.id}
+                    currentBoost={intent.boostScore || 0}
+                    userCredits={currentUser.auraCredits}
+                    onBoost={boostIntent}
+                  />
+                </div>
 
                 {/* Resource Asks */}
                 {intent.resourceAsks && intent.resourceAsks.length > 0 && (

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useAppStore } from "@/store";
 import ActivityFeed from "@/components/ActivityFeed";
+import SeasonLeaderboard from "@/components/SeasonLeaderboard";
 
 export default function Market() {
   const router = useRouter();
@@ -236,9 +237,12 @@ export default function Market() {
             )}
           </div>
 
-          {/* ===== RIGHT: Activity Feed Sidebar ===== */}
-          <div className="lg:w-[300px] lg:sticky lg:top-20 lg:h-[calc(100vh-6rem)]">
-            <ActivityFeed maxItems={20} />
+          {/* ===== RIGHT: Leaderboard + Activity Feed Sidebar ===== */}
+          <div className="lg:w-[320px] space-y-6">
+            <SeasonLeaderboard intents={publishedIntents} />
+            <div className="lg:sticky lg:top-20">
+              <ActivityFeed maxItems={15} />
+            </div>
           </div>
         </div>
       </div>

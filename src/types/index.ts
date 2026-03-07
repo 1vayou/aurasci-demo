@@ -95,4 +95,5 @@ export interface IntentAsset {
   resourceAsks?: ResourceAsk[];
   trendingRank?: number;
   supporterCount?: number;
+  boostScore?: number; // Task 6: Burn-to-Boost热度值
 }
