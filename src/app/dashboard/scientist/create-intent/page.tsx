@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { useAppStore } from "@/store";
 import type { IntentAsset, Milestone } from "@/types";
+import AISentinelModal from "@/components/AISentinelModal";
 
 interface MilestoneForm {
   objective: string;
@@ -49,15 +50,7 @@ export default function CreateIntent() {
     { ...emptyMilestone },
   ]);
 
-  const [isScreening, setIsScreening] = useState(false);
-  const [screeningStep, setScreeningStep] = useState(0);
-
-  const screeningSteps = [
-    "Analyzing hypothesis validity...",
-    "Verifying milestone feasibility...",
-    "Assessing funding structure...",
-    "AI Gatekeeper Approved ✓",
-  ];
+  const [showAISentinel, setShowAISentinel] = useState(false);
 
   // Redirect if not approved scientist
   if (!currentUser.profile || currentUser.profile.status !== "approved") {
@@ -120,16 +113,15 @@ export default function CreateIntent() {
     e.preventDefault();
     if (!isFormValid()) return;
 
-    setIsScreening(true);
+    // Show AI Sentinel Modal
+    setShowAISentinel(true);
+  };
 
-    // Simulate AI Gatekeeper screening
-    for (let i = 0; i < screeningSteps.length; i++) {
-      setScreeningStep(i);
-      await new Promise((resolve) =>
-        setTimeout(resolve, i === screeningSteps.length - 1 ? 800 : 1000)
-      );
-    }
+  const handleAIComplete = () => {
+    // Close modal
+    setShowAISentinel(false);
 
+    // Create intent
     const intentId = `intent_${Date.now()}`;
     const milestoneLabels = ["M1", "M2", "M3"] as const;
     const milestoneSublabels = ["Phase 1", "Phase 2", "Phase 3"];
@@ -170,63 +162,15 @@ export default function CreateIntent() {
     router.push("/market");
   };
 
-  // AI Screening Overlay
-  if (isScreening) {
-    return (
-      <div className="min-h-screen hero-gradient grid-pattern flex items-center justify-center px-6">
-        <div className="text-center max-w-md">
-          <div className="relative mb-8">
-            <div className="w-24 h-24 mx-auto rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
-              {screeningStep < screeningSteps.length - 1 ? (
-                <Loader2 className="w-10 h-10 text-green-400 animate-spin" />
-              ) : (
-                <ShieldCheck className="w-10 h-10 text-green-400 green-shield" />
-              )}
-            </div>
-            {/* Pulse ring */}
-            <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full border border-green-500/20 animate-ping" />
-          </div>
-
-          <h2 className="text-2xl font-bold text-white mb-3">
-            AI Gatekeeper Screening
-          </h2>
-
-          <div className="space-y-3 mb-6">
-            {screeningSteps.map((step, idx) => (
-              <div
-                key={idx}
-                className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-500 ${
-                  idx < screeningStep
-                    ? "bg-green-500/5 border border-green-500/20"
-                    : idx === screeningStep
-                    ? "bg-white/[0.03] border border-white/[0.1]"
-                    : "opacity-30"
-                }`}
-              >
-                {idx < screeningStep ? (
-                  <CheckSquare className="w-4 h-4 text-green-400 flex-shrink-0" />
-                ) : idx === screeningStep ? (
-                  <Loader2 className="w-4 h-4 text-white/60 animate-spin flex-shrink-0" />
-                ) : (
-                  <div className="w-4 h-4 rounded-sm border border-white/20 flex-shrink-0" />
-                )}
-                <span
-                  className={`text-sm ${
-                    idx <= screeningStep ? "text-white/80" : "text-white/30"
-                  }`}
-                >
-                  {step}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen hero-gradient grid-pattern py-16 px-6">
+      {/* AI Sentinel Modal */}
+      <AISentinelModal 
+        isOpen={showAISentinel} 
+        onComplete={handleAIComplete}
+        type="intent"
+      />
+
       <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="mb-8">
