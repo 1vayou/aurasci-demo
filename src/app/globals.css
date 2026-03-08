@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0a0f;
-  --foreground: #e8e8ed;
-  --accent-green: #22c55e;
-  --accent-purple: #8b5cf6;
-  --accent-blue: #3b82f6;
-  --neon-green: #00ff88;
-  --neon-blue: #00d4ff;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.08);
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --accent-orange: #f97316;
+  --accent-warm: #fb923c;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --aura-glow: rgba(249, 115, 22, 0.12);
 }
 
 body {
@@ -20,18 +18,18 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Animated gradient background */
+/* Warm gradient background */
 .hero-gradient {
-  background: radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, rgba(34, 197, 94, 0.06) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 0%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 20% 50%, rgba(249, 115, 22, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(251, 146, 60, 0.03) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 0%, rgba(254, 215, 170, 0.02) 0%, transparent 50%);
 }
 
-/* Grid pattern overlay */
+/* Subtle grid pattern */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    linear-gradient(rgba(249, 115, 22, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -80,95 +78,41 @@ body {
   animation: floatUp 1s ease-out forwards;
 }
 
-/* === Sci-Fi Card Frame === */
+/* === Warm Aura Card === */
 .sci-fi-card {
   position: relative;
-  background: linear-gradient(145deg, rgba(15, 25, 20, 0.95), rgba(10, 15, 25, 0.95));
-  border: 1px solid rgba(0, 255, 136, 0.15);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.sci-fi-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 255, 136, 0.3), transparent 40%, transparent 60%, rgba(0, 212, 255, 0.3));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+.sci-fi-card:hover {
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.12);
 }
 
-.sci-fi-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: conic-gradient(from 0deg, transparent 0deg 340deg, rgba(0, 255, 136, 0.08) 340deg 360deg);
-  animation: sci-fi-rotate 8s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes sci-fi-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Corner accents */
-.sci-fi-corners {
-  position: relative;
-}
-
-.sci-fi-corners::before,
-.sci-fi-corners::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-}
-
-.sci-fi-corners::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid rgba(0, 255, 136, 0.6);
-  border-left: 2px solid rgba(0, 255, 136, 0.6);
-  border-radius: 4px 0 0 0;
-}
-
-.sci-fi-corners::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.6);
-  border-right: 2px solid rgba(0, 212, 255, 0.6);
-  border-radius: 0 0 4px 0;
-}
-
-/* Neon glow text */
+/* Warm glow text */
 .neon-green-text {
-  color: #00ff88;
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+  color: #10b981;
+  text-shadow: none;
 }
 
 .neon-blue-text {
-  color: #00d4ff;
-  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
+  color: #f97316;
+  text-shadow: none;
 }
 
-/* Card hover glow */
+/* Card hover with warm aura */
 .card-glow-green:hover {
-  box-shadow: 0 0 40px rgba(34, 197, 94, 0.12), 0 0 80px rgba(34, 197, 94, 0.06);
-  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
 }
 
 .card-glow-purple:hover {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.12), 0 0 80px rgba(139, 92, 246, 0.06);
-  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.15);
+  border-color: rgba(249, 115, 22, 0.3);
 }
 
 /* Floating animation */
@@ -183,7 +127,7 @@ body {
 
 /* Subtle pulse for shield icon */
 @keyframes shield-pulse {
-  0%, 100% { opacity: 0.8; }
+  0%, 100% { opacity: 0.9; }
   50% { opacity: 1; }
 }
 
@@ -191,15 +135,15 @@ body {
   animation: shield-pulse 3s ease-in-out infinite;
 }
 
-/* Halo ring for patron avatar */
+/* Warm halo ring for patron avatar */
 .halo-ring {
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.6), 0 0 12px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.4), 0 0 12px rgba(249, 115, 22, 0.2);
 }
 
 /* Green Shield verified badge */
 .green-shield {
-  color: #22c55e;
-  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.4));
+  color: #10b981;
+  filter: drop-shadow(0 0 4px rgba(16, 185, 129, 0.3));
 }
 
 /* AI Score ring */
@@ -208,12 +152,12 @@ body {
 }
 
 .score-ring-bg {
-  stroke: rgba(255, 255, 255, 0.06);
+  stroke: #f3f4f6;
 }
 
 .score-ring-fill {
-  stroke: #00ff88;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 136, 0.4));
+  stroke: #f97316;
+  filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.3));
   transition: stroke-dashoffset 1s ease-out;
 }
 
@@ -227,7 +171,7 @@ body {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 255, 136, 0.4);
+  border: 2px solid rgba(249, 115, 22, 0.3);
   animation: timeline-pulse 2s ease-in-out infinite;
 }
 
@@ -236,86 +180,38 @@ body {
   50% { opacity: 0.8; transform: scale(1.2); }
 }
 
-/* Diagonal stripes accent */
-.diagonal-stripes {
-  background: repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 4px,
-    rgba(0, 255, 136, 0.15) 4px,
-    rgba(0, 255, 136, 0.15) 6px
-  );
-}
-
-/* Tag styles */
+/* Tag styles with warm colors */
 .tag-green {
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  color: #00ff88;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #059669;
 }
 
 .tag-blue {
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  color: #ea580c;
 }
 
 .tag-purple {
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.3);
-  color: #a78bfa;
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  color: #f97316;
 }
 
-/* CRT scanline effect for terminal */
+/* Clean activity feed (no CRT effect) */
 .crt-scanlines {
   position: relative;
 }
 
-.crt-scanlines::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 255, 136, 0.015) 2px,
-    rgba(0, 255, 136, 0.015) 4px
-  );
-  pointer-events: none;
-  z-index: 10;
-}
-
-.crt-scanlines::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    transparent 50%,
-    rgba(0, 0, 0, 0.02) 50%
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 10;
-  animation: crt-flicker 0.1s infinite;
-}
-
-@keyframes crt-flicker {
-  0% { opacity: 0.85; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.85; }
-}
-
-/* CRT glow border */
+/* Warm glow border */
 .crt-glow {
-  box-shadow:
-    inset 0 0 30px rgba(0, 255, 136, 0.03),
-    0 0 20px rgba(0, 255, 136, 0.05);
+  box-shadow: 0 2px 8px rgba(249, 115, 22, 0.08);
 }
 
-/* Terminal flash for new log entry */
+/* Flash animation for new entries */
 @keyframes flash-in {
-  0% { background-color: rgba(0, 255, 136, 0.12); }
+  0% { background-color: rgba(249, 115, 22, 0.08); }
   100% { background-color: transparent; }
 }
 
@@ -323,14 +219,23 @@ body {
   animation: flash-in 1.5s ease-out;
 }
 
-/* Scrollbar for terminal */
+/* Clean scrollbar */
 .font-mono::-webkit-scrollbar {
   width: 4px;
 }
 .font-mono::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f9fafb;
 }
 .font-mono::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 136, 0.15);
+  background: rgba(249, 115, 22, 0.2);
   border-radius: 2px;
+}
+
+/* Warm aura shadow utility */
+.aura-shadow {
+  box-shadow: 0 8px 30px rgba(249, 115, 22, 0.12);
+}
+
+.aura-shadow-lg {
+  box-shadow: 0 12px 40px rgba(249, 115, 22, 0.15);
 }

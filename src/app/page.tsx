@@ -28,43 +28,43 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="hero-gradient grid-pattern min-h-screen">
+    <div className="hero-gradient grid-pattern min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative max-w-6xl mx-auto px-6 pt-24 pb-16 text-center">
         {/* Floating decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl animate-float" />
         <div
-          className="absolute top-40 right-10 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl animate-float"
+          className="absolute top-40 right-10 w-64 h-64 bg-orange-400/5 rounded-full blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
 
         {/* Green Shield badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/20 bg-green-500/5 mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-50 mb-8">
           <ShieldCheck className="w-4 h-4 green-shield shield-pulse" />
-          <span className="text-xs font-medium text-green-400 tracking-wide uppercase">
+          <span className="text-xs font-medium text-emerald-600 tracking-wide uppercase">
             AI-Verified Research Funding
           </span>
         </div>
 
         {/* Main headline */}
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-          <span className="text-white">From</span>{" "}
-          <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+          <span className="text-gray-900">From</span>{" "}
+          <span className="bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
             Proof
           </span>{" "}
-          <span className="text-white">to</span>{" "}
-          <span className="bg-gradient-to-r from-purple-400 to-violet-400 bg-clip-text text-transparent">
+          <span className="text-gray-900">to</span>{" "}
+          <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
             Capital
           </span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-white/50 max-w-2xl mx-auto mb-4 leading-relaxed">
+        <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-4 leading-relaxed">
           Milestone-based open science funding infrastructure
           <br />
           powered by AI Agents.
         </p>
 
-        <p className="text-sm text-white/30 max-w-xl mx-auto mb-16">
+        <p className="text-sm text-gray-500 max-w-xl mx-auto mb-16">
           Scientists publish research intents. AI verifies milestones. Patrons
           fund breakthroughs. Capital flows when proof lands.
         </p>
@@ -74,21 +74,21 @@ export default function LandingPage() {
           {/* Scientist Card */}
           <button
             onClick={handleScientist}
-            className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 text-left transition-all duration-500 hover:scale-[1.02] card-glow-green"
+            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 text-left transition-all duration-500 hover:scale-[1.02] hover:border-orange-300 aura-shadow"
           >
             {/* Gradient accent */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Icon */}
-            <div className="w-14 h-14 rounded-xl bg-green-500/10 flex items-center justify-center mb-6 group-hover:bg-green-500/15 transition-colors">
-              <FlaskConical className="w-7 h-7 text-green-400" />
+            <div className="w-14 h-14 rounded-xl bg-emerald-50 flex items-center justify-center mb-6 group-hover:bg-emerald-100 transition-colors">
+              <FlaskConical className="w-7 h-7 text-emerald-600" />
             </div>
 
             {/* Content */}
-            <h2 className="text-2xl font-semibold text-white mb-3">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
               I&apos;m a Scientist
             </h2>
-            <p className="text-sm text-white/40 leading-relaxed mb-6">
+            <p className="text-sm text-gray-600 leading-relaxed mb-6">
               Publish your research intent, set milestones, submit proof of
               progress, and receive milestone-based patronage for your
               breakthrough work.
@@ -96,22 +96,22 @@ export default function LandingPage() {
 
             {/* Features */}
             <div className="space-y-2 mb-6">
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <Atom className="w-3.5 h-3.5 text-green-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Atom className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Publish Intent Assets</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <ShieldCheck className="w-3.5 h-3.5 text-green-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
                 <span>AI-Verified Milestones</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <TrendingUp className="w-3.5 h-3.5 text-green-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
                 <span>Milestone-Based Funding</span>
               </div>
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+            <div className="flex items-center gap-2 text-orange-500 text-sm font-medium">
               <span>Start Publishing</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -120,21 +120,21 @@ export default function LandingPage() {
           {/* Patron Card */}
           <button
             onClick={handlePatron}
-            className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 text-left transition-all duration-500 hover:scale-[1.02] card-glow-purple"
+            className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-8 text-left transition-all duration-500 hover:scale-[1.02] hover:border-orange-300 aura-shadow"
           >
             {/* Gradient accent */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Icon */}
-            <div className="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 group-hover:bg-purple-500/15 transition-colors">
-              <Gem className="w-7 h-7 text-purple-400" />
+            <div className="w-14 h-14 rounded-xl bg-orange-50 flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors">
+              <Gem className="w-7 h-7 text-orange-500" />
             </div>
 
             {/* Content */}
-            <h2 className="text-2xl font-semibold text-white mb-3">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-3">
               I&apos;m a Patron
             </h2>
-            <p className="text-sm text-white/40 leading-relaxed mb-6">
+            <p className="text-sm text-gray-600 leading-relaxed mb-6">
               Browse AI-verified research intents, provide patronage to
               promising science, and track milestone-based progress of funded
               projects.
@@ -142,22 +142,22 @@ export default function LandingPage() {
 
             {/* Features */}
             <div className="space-y-2 mb-6">
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <Zap className="w-3.5 h-3.5 text-purple-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Zap className="w-3.5 h-3.5 text-orange-500" />
                 <span>Browse Verified Research</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <Lock className="w-3.5 h-3.5 text-purple-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <Lock className="w-3.5 h-3.5 text-orange-500" />
                 <span>Escrow-Protected Patronage</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-white/30">
-                <ShieldCheck className="w-3.5 h-3.5 text-purple-500/60" />
+              <div className="flex items-center gap-2 text-xs text-gray-500">
+                <ShieldCheck className="w-3.5 h-3.5 text-orange-500" />
                 <span>AI Trust Loop Verification</span>
               </div>
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-2 text-purple-400 text-sm font-medium">
+            <div className="flex items-center gap-2 text-orange-500 text-sm font-medium">
               <span>Explore Market</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -165,16 +165,16 @@ export default function LandingPage() {
         </div>
 
         {/* Bottom tagline */}
-        <div className="mt-16 flex items-center justify-center gap-6 text-xs text-white/20">
+        <div className="mt-16 flex items-center justify-center gap-6 text-xs text-gray-400">
           <span className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-green-500/40" />
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
             AI Verified
           </span>
-          <span className="w-px h-3 bg-white/10" />
+          <span className="w-px h-3 bg-gray-300" />
           <span>Milestone-Based</span>
-          <span className="w-px h-3 bg-white/10" />
+          <span className="w-px h-3 bg-gray-300" />
           <span>Escrow-Protected</span>
-          <span className="w-px h-3 bg-white/10" />
+          <span className="w-px h-3 bg-gray-300" />
           <span>Open Science</span>
         </div>
       </section>
