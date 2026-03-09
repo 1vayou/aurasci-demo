@@ -95,22 +95,22 @@ export default function ScientistOnboarding() {
   };
 
   return (
-    <div className="min-h-screen hero-gradient grid-pattern py-16 px-6">
+    <div className="min-h-screen hero-gradient grid-pattern py-16 px-6 bg-white">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-white mb-3">
+          <h1 className="text-4xl font-bold text-gray-900 mb-3">
             Scientist Onboarding
           </h1>
-          <p className="text-white/40 text-sm">
+          <p className="text-gray-600 text-sm">
             Connect your research identity and create your Lab Profile
           </p>
         </div>
 
         {/* OAuth Connection Section */}
-        <div className="mb-8 p-6 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-          <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <Award className="w-5 h-5 text-green-400" />
+        <div className="mb-8 p-6 rounded-2xl border border-gray-200 bg-white aura-shadow">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <Award className="w-5 h-5 text-orange-500" />
             Step 1: Connect Research Identity
           </h2>
 
@@ -119,21 +119,21 @@ export default function ScientistOnboarding() {
             <button
               onClick={() => handleConnect("github")}
               disabled={isConnecting || (isConnected && authProvider === "github")}
-              className="group relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 text-left transition-all duration-300 hover:border-green-500/30 hover:bg-white/[0.04] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-4 text-left transition-all duration-300 hover:border-orange-300 hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center">
                   {isConnecting && authProvider === "github" ? (
-                    <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
+                    <Loader2 className="w-5 h-5 text-orange-500 animate-spin" />
                   ) : isConnected && authProvider === "github" ? (
-                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                   ) : (
-                    <Github className="w-5 h-5 text-green-400" />
+                    <Github className="w-5 h-5 text-orange-500" />
                   )}
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-white">GitHub</div>
-                  <div className="text-xs text-white/40">
+                  <div className="text-sm font-medium text-gray-900">GitHub</div>
+                  <div className="text-xs text-gray-500">
                     {isConnected && authProvider === "github"
                       ? "Connected ✓"
                       : "Connect account"}
@@ -146,21 +146,21 @@ export default function ScientistOnboarding() {
             <button
               onClick={() => handleConnect("orcid")}
               disabled={isConnecting || (isConnected && authProvider === "orcid")}
-              className="group relative overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.02] p-4 text-left transition-all duration-300 hover:border-green-500/30 hover:bg-white/[0.04] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white p-4 text-left transition-all duration-300 hover:border-orange-300 hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center">
                   {isConnecting && authProvider === "orcid" ? (
-                    <Loader2 className="w-5 h-5 text-green-400 animate-spin" />
+                    <Loader2 className="w-5 h-5 text-orange-500 animate-spin" />
                   ) : isConnected && authProvider === "orcid" ? (
-                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                   ) : (
-                    <Award className="w-5 h-5 text-green-400" />
+                    <Award className="w-5 h-5 text-orange-500" />
                   )}
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-white">ORCID</div>
-                  <div className="text-xs text-white/40">
+                  <div className="text-sm font-medium text-gray-900">ORCID</div>
+                  <div className="text-xs text-gray-500">
                     {isConnected && authProvider === "orcid"
                       ? "Connected ✓"
                       : "Connect account"}
@@ -172,8 +172,8 @@ export default function ScientistOnboarding() {
 
           {/* Connected Handle Display */}
           {mockHandle && (
-            <div className="mt-4 p-3 rounded-lg bg-green-500/5 border border-green-500/20">
-              <div className="text-xs text-green-400 font-medium">
+            <div className="mt-4 p-3 rounded-lg bg-emerald-50 border border-emerald-200">
+              <div className="text-xs text-emerald-700 font-medium">
                 Connected: {mockHandle}
               </div>
             </div>
@@ -182,16 +182,16 @@ export default function ScientistOnboarding() {
 
         {/* Lab Profile Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-            <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-              <FileText className="w-5 h-5 text-purple-400" />
+          <div className="p-6 rounded-2xl border border-gray-200 bg-white aura-shadow">
+            <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-orange-500" />
               Step 2: Complete Lab Profile
             </h2>
 
             <div className="space-y-5">
               {/* Full Name */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <User className="w-4 h-4" />
                   Full Name
                 </label>
@@ -202,14 +202,14 @@ export default function ScientistOnboarding() {
                   onChange={(e) =>
                     setFormData({ ...formData, fullName: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                   placeholder="Dr. Alice Smith"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <Mail className="w-4 h-4" />
                   Email
                 </label>
@@ -220,14 +220,14 @@ export default function ScientistOnboarding() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                   placeholder="alice@university.edu"
                 />
               </div>
 
               {/* Affiliation */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <Building2 className="w-4 h-4" />
                   Affiliation
                 </label>
@@ -238,16 +238,16 @@ export default function ScientistOnboarding() {
                   onChange={(e) =>
                     setFormData({ ...formData, affiliation: e.target.value })
                   }
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                   placeholder="MIT, Stanford, etc."
                 />
               </div>
 
               {/* Research Bio */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Research Bio
-                  <span className="ml-2 text-xs text-white/40">
+                  <span className="ml-2 text-xs text-gray-400">
                     ({wordCount}/200 words)
                   </span>
                 </label>
@@ -256,11 +256,11 @@ export default function ScientistOnboarding() {
                   value={formData.bio}
                   onChange={handleBioChange}
                   rows={6}
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all resize-none"
                   placeholder="Describe your research focus, expertise, and current projects..."
                 />
                 {wordCount > 200 && (
-                  <p className="mt-2 text-xs text-red-400">
+                  <p className="mt-2 text-xs text-red-500">
                     Bio exceeds 200 word limit
                   </p>
                 )}
@@ -272,7 +272,7 @@ export default function ScientistOnboarding() {
           <button
             type="submit"
             disabled={!mockHandle || isSubmitting || wordCount > 200}
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>
