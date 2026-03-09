@@ -105,10 +105,10 @@ function FundingRing({
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <span className="text-xl sm:text-2xl font-bold neon-green-text">
+        <span className="text-xl sm:text-2xl font-bold text-orange-500">
           ${escrowed.toLocaleString()}
         </span>
-        <span className="text-xs text-white/40">
+        <span className="text-xs text-gray-500">
           ${goal.toLocaleString()} Goal
         </span>
       </div>
@@ -293,29 +293,29 @@ export default function IntentDetail() {
   };
 
   return (
-    <div className="min-h-screen hero-gradient grid-pattern py-12 px-4 sm:px-6">
+    <div className="min-h-screen hero-gradient grid-pattern py-12 px-4 sm:px-6 bg-white">
       <div className="max-w-5xl mx-auto">
         {/* Back */}
         <button
           onClick={() => router.push("/market")}
-          className="flex items-center gap-2 text-white/40 text-sm hover:text-white/60 transition-colors mb-6"
+          className="flex items-center gap-2 text-gray-500 text-sm hover:text-gray-700 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Market
         </button>
 
-        {/* ===== MAIN SCI-FI CARD ===== */}
-        <div className="sci-fi-card sci-fi-corners p-1">
-          <div className="relative z-10 rounded-[14px] bg-[#0b0f14]/95 p-6 sm:p-8">
+        {/* ===== MAIN CARD ===== */}
+        <div className="sci-fi-card p-1 bg-white border border-gray-200 aura-shadow-lg">
+          <div className="relative z-10 rounded-[14px] bg-white p-6 sm:p-8">
             {/* Top row: Title + Funding Ring */}
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Left: Main info */}
               <div className="flex-1 min-w-0">
                 {/* Supporter count badge */}
                 {intent.supporterCount && (
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 mb-4">
-                    <Sparkles className="w-3.5 h-3.5 text-green-400" />
-                    <span className="text-xs font-semibold text-green-400">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 mb-4">
+                    <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+                    <span className="text-xs font-semibold text-orange-600">
                       {intent.supporterCount >= 1000
                         ? `${(intent.supporterCount / 1000).toFixed(1)}k`
                         : intent.supporterCount}
@@ -324,7 +324,7 @@ export default function IntentDetail() {
                 )}
 
                 {/* Title */}
-                <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-5">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-5">
                   {intent.title}
                 </h1>
 
@@ -332,19 +332,19 @@ export default function IntentDetail() {
                 {scientist && (
                   <div className="flex items-center gap-3 mb-4">
                     {/* Avatar */}
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500/40 to-emerald-600/40 flex items-center justify-center border-2 border-green-500/30">
-                      <span className="text-lg text-green-200 font-bold">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center border-2 border-emerald-300">
+                      <span className="text-lg text-emerald-700 font-bold">
                         {scientist.fullName.split(" ").map((n) => n[0]).join("")}
                       </span>
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-white">
+                        <span className="text-sm font-semibold text-gray-900">
                           {scientist.fullName}
                         </span>
                         <ShieldCheck className="w-4 h-4 green-shield" />
                       </div>
-                      <span className="text-xs text-white/40">
+                      <span className="text-xs text-gray-500">
                         {scientist.affiliation}
                       </span>
                     </div>
@@ -362,9 +362,9 @@ export default function IntentDetail() {
                     </span>
                   ))}
                   {intent.aiScore && (
-                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10">
-                      <ShieldCheck className="w-3 h-3 text-green-400" />
-                      <span className="text-[11px] font-semibold text-white/70">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-50 border border-orange-200">
+                      <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                      <span className="text-[11px] font-semibold text-gray-700">
                         AI Score: {intent.aiScore}/100
                       </span>
                     </span>
@@ -372,7 +372,7 @@ export default function IntentDetail() {
                 </div>
 
                 {/* Hypothesis */}
-                <p className="text-sm text-white/60 leading-relaxed mb-6">
+                <p className="text-sm text-gray-600 leading-relaxed mb-6">
                   {intent.coreHypothesis}
                 </p>
 
@@ -385,7 +385,7 @@ export default function IntentDetail() {
                         href={link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/[0.08] text-xs text-white/50 hover:text-white/70 hover:border-white/20 transition-all"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-gray-200 text-xs text-gray-600 hover:text-gray-900 hover:border-orange-300 transition-all"
                       >
                         <ExternalLink className="w-3 h-3" />
                         {link.includes("github") ? "GitHub" : link.includes("arxiv") ? "ArXiv" : "Link"}
@@ -415,17 +415,17 @@ export default function IntentDetail() {
 
                 {/* Resource Asks */}
                 {intent.resourceAsks && intent.resourceAsks.length > 0 && (
-                  <div className="w-full p-3 rounded-xl bg-white/[0.02] border border-white/[0.08]">
+                  <div className="w-full p-3 rounded-xl bg-orange-50 border border-orange-100">
                     <div className="flex items-center gap-2 mb-2">
-                      <Cpu className="w-3.5 h-3.5 text-white/40" />
-                      <span className="text-[10px] font-semibold text-white/50 uppercase tracking-wider">
+                      <Cpu className="w-3.5 h-3.5 text-gray-500" />
+                      <span className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider">
                         Resource Asks
                       </span>
                     </div>
                     {intent.resourceAsks.map((ask, i) => (
                       <div key={i} className="flex items-center gap-2 py-1">
                         <ResourceIcon type={ask.type} />
-                        <span className="text-xs text-white/70 font-medium">
+                        <span className="text-xs text-gray-700 font-medium">
                           {ask.quantity}
                         </span>
                       </div>
@@ -435,9 +435,9 @@ export default function IntentDetail() {
 
                 {/* Trending badge */}
                 {intent.trendingRank && intent.trendingRank <= 5 && (
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                    <Flame className="w-3.5 h-3.5 text-orange-400" />
-                    <span className="text-xs font-semibold text-orange-400">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 border border-orange-200">
+                    <Flame className="w-3.5 h-3.5 text-orange-500" />
+                    <span className="text-xs font-semibold text-orange-600">
                       Trending Top {intent.trendingRank}
                     </span>
                   </div>
@@ -446,7 +446,7 @@ export default function IntentDetail() {
             </div>
 
             {/* ===== MILESTONE TIMELINE ===== */}
-            <div className="mt-8 pt-6 border-t border-white/[0.06]">
+            <div className="mt-8 pt-6 border-t border-gray-100">
               <div className="flex items-center w-full">
                 {allSteps.map((step, idx) => (
                   <TimelineStep
@@ -459,40 +459,40 @@ export default function IntentDetail() {
                 {/* R (Result) */}
                 <div className="flex flex-col items-center flex-1 min-w-0">
                   <div className="flex items-center w-full">
-                    <div className="flex-1 h-[2px] bg-white/10" />
-                    <div className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[10px] text-white/30">●</span>
+                    <div className="flex-1 h-[2px] bg-gray-200" />
+                    <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                      <span className="text-[10px] text-gray-400">●</span>
                     </div>
-                    <div className="flex-1 h-[2px] bg-white/10" />
+                    <div className="flex-1 h-[2px] bg-gray-200" />
                   </div>
                   <div className="mt-2 text-center">
-                    <div className="text-xs font-bold text-white/40">R</div>
-                    <div className="text-[10px] text-white/30">Result</div>
+                    <div className="text-xs font-bold text-gray-500">R</div>
+                    <div className="text-[10px] text-gray-400">Result</div>
                   </div>
                 </div>
                 {/* SSR (Award) */}
                 <div className="flex flex-col items-center flex-1 min-w-0">
                   <div className="flex items-center w-full">
-                    <div className="flex-1 h-[2px] bg-white/10" />
-                    <div className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/20 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[10px] text-white/30">★</span>
+                    <div className="flex-1 h-[2px] bg-gray-200" />
+                    <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
+                      <span className="text-[10px] text-gray-400">★</span>
                     </div>
                     <div className="flex-1" />
                   </div>
                   <div className="mt-2 text-center">
-                    <div className="text-xs font-bold text-white/40">SSR</div>
-                    <div className="text-[10px] text-white/30">Award</div>
+                    <div className="text-xs font-bold text-gray-500">SSR</div>
+                    <div className="text-[10px] text-gray-400">Award</div>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* ===== BACKED BY + PATRONS ===== */}
-            <div className="mt-6 pt-6 border-t border-white/[0.06]">
+            <div className="mt-6 pt-6 border-t border-gray-100">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 {/* Backed by */}
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-white/40 font-medium">
+                  <span className="text-xs text-gray-500 font-medium">
                     Backed by:
                   </span>
                   {intent.backers && intent.backers.length > 0 ? (
@@ -500,21 +500,21 @@ export default function IntentDetail() {
                       {intent.backers.map((backer) => (
                         <div
                           key={backer.id}
-                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.1]"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-50 border border-gray-200"
                         >
-                          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-purple-500/40 to-blue-500/40 flex items-center justify-center">
-                            <span className="text-[8px] text-white font-bold">
+                          <div className="w-5 h-5 rounded-full bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center">
+                            <span className="text-[8px] text-orange-700 font-bold">
                               {backer.name.charAt(0)}
                             </span>
                           </div>
-                          <span className="text-xs text-white/70 font-medium">
+                          <span className="text-xs text-gray-700 font-medium">
                             {backer.name}
                           </span>
                         </div>
                       ))}
                     </div>
                   ) : (
-                    <span className="text-xs text-white/30">No backers yet</span>
+                    <span className="text-xs text-gray-400">No backers yet</span>
                   )}
 
                   {/* Patron avatars */}
@@ -523,17 +523,17 @@ export default function IntentDetail() {
                       {intent.patrons.slice(0, 4).map((patron) => (
                         <div
                           key={patron.id}
-                          className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500/50 to-pink-500/50 flex items-center justify-center border-2 border-[#0b0f14] halo-ring"
+                          className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-200 to-amber-200 flex items-center justify-center border-2 border-white halo-ring"
                           title={patron.name}
                         >
-                          <span className="text-[9px] text-white font-bold">
+                          <span className="text-[9px] text-orange-800 font-bold">
                             {patron.name.charAt(0)}
                           </span>
                         </div>
                       ))}
                       {intent.patrons.length > 4 && (
-                        <div className="w-7 h-7 rounded-full bg-white/[0.06] flex items-center justify-center border-2 border-[#0b0f14]">
-                          <span className="text-[9px] text-white/60 font-medium">
+                        <div className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center border-2 border-white">
+                          <span className="text-[9px] text-gray-500 font-medium">
                             +{intent.patrons.length - 4}
                           </span>
                         </div>
@@ -541,9 +541,6 @@ export default function IntentDetail() {
                     </div>
                   )}
                 </div>
-
-                {/* Diagonal accent */}
-                <div className="hidden sm:block w-16 h-4 diagonal-stripes rounded" />
               </div>
             </div>
           </div>
@@ -551,8 +548,8 @@ export default function IntentDetail() {
 
         {/* ===== MILESTONE DETAILS ===== */}
         <div className="mt-8 space-y-4">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-green-400" />
+          <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-emerald-600" />
             Milestone Details
           </h2>
 
@@ -564,12 +561,12 @@ export default function IntentDetail() {
             return (
               <div
                 key={ms.id}
-                className={`p-5 rounded-xl border transition-all ${
+                className={`p-5 rounded-xl border transition-all bg-white ${
                   isActive
-                    ? "border-green-500/30 bg-green-500/[0.03]"
+                    ? "border-orange-200"
                     : isDone
-                    ? "border-green-500/20 bg-green-500/[0.02]"
-                    : "border-white/[0.06] bg-white/[0.01]"
+                    ? "border-emerald-200"
+                    : "border-gray-200"
                 }`}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -577,10 +574,10 @@ export default function IntentDetail() {
                     <div
                       className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm ${
                         isDone
-                          ? "bg-green-500/20 text-green-400"
+                          ? "bg-emerald-100 text-emerald-700"
                           : isActive || isProof
-                          ? "bg-green-500/10 text-green-400"
-                          : "bg-white/[0.04] text-white/30"
+                          ? "bg-orange-100 text-orange-600"
+                          : "bg-gray-100 text-gray-400"
                       }`}
                     >
                       {ms.label}
@@ -588,12 +585,12 @@ export default function IntentDetail() {
                     <div>
                       <h3
                         className={`text-sm font-semibold ${
-                          isDone || isActive ? "text-white" : "text-white/50"
+                          isDone || isActive ? "text-gray-900" : "text-gray-500"
                         }`}
                       >
                         {ms.objective}
                       </h3>
-                      <p className="text-xs text-white/30 mt-1">
+                      <p className="text-xs text-gray-500 mt-1">
                         Est: {ms.estTime} · Release: ${ms.releaseAmountUSDC.toLocaleString()} USDC
                       </p>
                     </div>
@@ -603,12 +600,12 @@ export default function IntentDetail() {
                   <span
                     className={`px-2.5 py-1 rounded-full text-[10px] font-semibold whitespace-nowrap ${
                       isDone
-                        ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
                         : isProof
-                        ? "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+                        ? "bg-amber-50 text-amber-700 border border-amber-200"
                         : isActive
-                        ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                        : "bg-white/[0.04] text-white/30 border border-white/[0.08]"
+                        ? "bg-orange-50 text-orange-700 border border-orange-200"
+                        : "bg-gray-50 text-gray-500 border border-gray-200"
                     }`}
                   >
                     {isDone
@@ -623,8 +620,8 @@ export default function IntentDetail() {
 
                 {/* Verification criteria */}
                 <div className="mt-3 pl-[52px]">
-                  <p className="text-xs text-white/30">
-                    <span className="text-white/50 font-medium">Verification:</span>{" "}
+                  <p className="text-xs text-gray-500">
+                    <span className="text-gray-700 font-medium">Verification:</span>{" "}
                     {ms.verificationCriteria}
                   </p>
                 </div>
@@ -638,7 +635,7 @@ export default function IntentDetail() {
                           status: "proof_submitted",
                         })
                       }
-                      className="px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-300 text-[10px] font-medium hover:bg-orange-500/20 transition-all"
+                      className="px-3 py-1.5 rounded-lg bg-orange-50 border border-orange-200 text-orange-700 text-[10px] font-medium hover:bg-orange-100 transition-all"
                     >
                       [Dev] Submit Proof
                     </button>
@@ -652,7 +649,7 @@ export default function IntentDetail() {
                           status: "ai_verified",
                         })
                       }
-                      className="px-3 py-1.5 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-300 text-[10px] font-medium hover:bg-orange-500/20 transition-all"
+                      className="px-3 py-1.5 rounded-lg bg-orange-50 border border-orange-200 text-orange-700 text-[10px] font-medium hover:bg-orange-100 transition-all"
                     >
                       [Dev] AI Verify
                     </button>
@@ -664,9 +661,9 @@ export default function IntentDetail() {
         </div>
 
         {/* ===== PATRONAGE SECTION ===== */}
-        <div className="mt-8 p-6 rounded-2xl border border-purple-500/20 bg-purple-500/[0.03]">
-          <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <DollarSign className="w-5 h-5 text-purple-400" />
+        <div className="mt-8 p-6 rounded-2xl border border-orange-200 bg-white aura-shadow">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <DollarSign className="w-5 h-5 text-orange-500" />
             Provide Patronage
           </h2>
           <div className="flex gap-3">
@@ -676,12 +673,12 @@ export default function IntentDetail() {
               placeholder="Amount (USDC)"
               value={patronAmount}
               onChange={(e) => setPatronAmount(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+              className="flex-1 px-4 py-3 rounded-xl bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
             />
             <button
               onClick={handlePatronage}
               disabled={isPatronizing || !patronAmount}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-purple-500/25 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-orange-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
               {isPatronizing ? (
                 <>
@@ -693,7 +690,7 @@ export default function IntentDetail() {
               )}
             </button>
           </div>
-          <p className="text-xs text-white/30 mt-3">
+          <p className="text-xs text-gray-500 mt-3">
             Patronage is escrowed and released upon AI-verified milestone completion.
           </p>
         </div>
