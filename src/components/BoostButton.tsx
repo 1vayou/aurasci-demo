@@ -39,7 +39,7 @@ export default function BoostButton({ intentId, currentBoost, userCredits, onBoo
       <button
         onClick={handleBoost}
         disabled={userCredits < BOOST_AMOUNT}
-        className="relative w-full py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/25 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 overflow-hidden group"
+        className="relative w-full py-3 px-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-200 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 overflow-hidden group"
       >
         <Flame className="w-5 h-5 group-hover:animate-pulse" />
         🔥 Boost with Aura ({BOOST_AMOUNT})
@@ -50,7 +50,7 @@ export default function BoostButton({ intentId, currentBoost, userCredits, onBoo
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="absolute pointer-events-none text-green-400 font-bold text-lg animate-float-up"
+          className="absolute pointer-events-none text-orange-500 font-bold text-lg animate-float-up"
           style={{
             left: particle.x,
             top: particle.y,

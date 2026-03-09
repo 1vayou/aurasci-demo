@@ -16,10 +16,10 @@ export default function SeasonLeaderboard({ intents }: LeaderboardProps) {
   if (sorted.length === 0) return null;
 
   return (
-    <div className="sci-fi-card p-6">
+    <div className="sci-fi-card p-6 bg-white border border-gray-200 aura-shadow">
       <div className="flex items-center gap-2 mb-4">
-        <TrendingUp className="w-5 h-5 text-yellow-400" />
-        <h3 className="text-lg font-bold text-white">🏆 Season Leaderboard</h3>
+        <TrendingUp className="w-5 h-5 text-orange-500" />
+        <h3 className="text-lg font-bold text-gray-900">🏆 Season Leaderboard</h3>
       </div>
 
       <div className="space-y-3">
@@ -28,8 +28,8 @@ export default function SeasonLeaderboard({ intents }: LeaderboardProps) {
             key={intent.id}
             className={`relative p-3 rounded-lg transition-all ${
               idx === 0
-                ? 'bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-2 border-yellow-500/50 shadow-lg shadow-yellow-500/20'
-                : 'bg-white/[0.02] border border-white/[0.08]'
+                ? 'bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-orange-300 shadow-lg shadow-orange-100'
+                : 'bg-white border border-gray-200'
             }`}
           >
             {idx === 0 && (

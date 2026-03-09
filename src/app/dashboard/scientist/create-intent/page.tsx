@@ -55,18 +55,18 @@ export default function CreateIntent() {
   // Redirect if not approved scientist
   if (!currentUser.profile || currentUser.profile.status !== "approved") {
     return (
-      <div className="min-h-screen hero-gradient grid-pattern flex items-center justify-center px-6">
+      <div className="min-h-screen hero-gradient grid-pattern flex items-center justify-center px-6 bg-white">
         <div className="text-center">
-          <ShieldCheck className="w-12 h-12 text-yellow-400/60 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-white mb-2">
+          <ShieldCheck className="w-12 h-12 text-amber-500/70 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
             Access Restricted
           </h2>
-          <p className="text-white/40 text-sm mb-6">
+          <p className="text-gray-600 text-sm mb-6">
             Only approved scientists can create Intent Assets.
           </p>
           <button
             onClick={() => router.push("/dashboard/scientist")}
-            className="px-6 py-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium hover:bg-green-500/20 transition-all"
+            className="px-6 py-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-medium hover:bg-emerald-100 transition-all"
           >
             Go to Dashboard
           </button>
@@ -163,7 +163,7 @@ export default function CreateIntent() {
   };
 
   return (
-    <div className="min-h-screen hero-gradient grid-pattern py-16 px-6">
+    <div className="min-h-screen hero-gradient grid-pattern py-16 px-6 bg-white">
       {/* AI Sentinel Modal */}
       <AISentinelModal 
         isOpen={showAISentinel} 
@@ -176,25 +176,25 @@ export default function CreateIntent() {
         <div className="mb-8">
           <button
             onClick={() => router.push("/dashboard/scientist")}
-            className="flex items-center gap-2 text-white/40 text-sm hover:text-white/60 transition-colors mb-4"
+            className="flex items-center gap-2 text-gray-500 text-sm hover:text-gray-700 transition-colors mb-4"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Dashboard
           </button>
-          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-            <Sparkles className="w-7 h-7 text-green-400" />
+          <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3">
+            <Sparkles className="w-7 h-7 text-orange-500" />
             Create Intent Asset
           </h1>
-          <p className="text-white/40 text-sm">
+          <p className="text-gray-600 text-sm">
             Define your research intent and set milestones for funding
           </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Basic Info */}
-          <div className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-            <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-              <Beaker className="w-5 h-5 text-green-400" />
+          <div className="p-6 rounded-2xl border border-gray-200 bg-white aura-shadow">
+            <h2 className="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+              <Beaker className="w-5 h-5 text-emerald-600" />
               Research Intent
             </h2>
 
@@ -202,7 +202,7 @@ export default function CreateIntent() {
               {/* Title & Ticker */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Title
                   </label>
                   <input
@@ -210,12 +210,12 @@ export default function CreateIntent() {
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                     placeholder="e.g., Reversing Cellular Aging via mRNA"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-white/70 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Ticker
                   </label>
                   <input
@@ -223,7 +223,7 @@ export default function CreateIntent() {
                     required
                     value={ticker}
                     onChange={(e) => setTicker(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all font-mono"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all font-mono"
                     placeholder="$CELL-01"
                   />
                 </div>
@@ -231,9 +231,9 @@ export default function CreateIntent() {
 
               {/* Core Hypothesis */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Core Hypothesis
-                  <span className="ml-2 text-xs text-white/40">
+                  <span className="ml-2 text-xs text-gray-500">
                     ({hypothesisWordCount}/250 words)
                   </span>
                 </label>
@@ -242,11 +242,11 @@ export default function CreateIntent() {
                   value={hypothesis}
                   onChange={handleHypothesisChange}
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all resize-none"
                   placeholder="Describe your core research hypothesis..."
                 />
                 {hypothesisWordCount > 250 && (
-                  <p className="mt-2 text-xs text-red-400">
+                  <p className="mt-2 text-xs text-red-500">
                     Hypothesis exceeds 250 word limit
                   </p>
                 )}
@@ -254,7 +254,7 @@ export default function CreateIntent() {
 
               {/* Funding Goal */}
               <div>
-                <label className="block text-sm font-medium text-white/70 mb-2 flex items-center gap-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
                   <DollarSign className="w-4 h-4" />
                   Funding Goal (USDC)
                 </label>
@@ -264,7 +264,7 @@ export default function CreateIntent() {
                   min="1"
                   value={fundingGoal}
                   onChange={(e) => setFundingGoal(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-green-500/50 focus:ring-2 focus:ring-green-500/20 transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-white border border-gray-200 text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                   placeholder="50000"
                 />
               </div>
@@ -272,12 +272,12 @@ export default function CreateIntent() {
           </div>
 
           {/* Milestones */}
-          <div className="p-6 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-            <h2 className="text-lg font-semibold text-white mb-2 flex items-center gap-2">
-              <Target className="w-5 h-5 text-purple-400" />
+          <div className="p-6 rounded-2xl border border-gray-200 bg-white aura-shadow">
+            <h2 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+              <Target className="w-5 h-5 text-orange-500" />
               Milestones
             </h2>
-            <p className="text-xs text-white/40 mb-6">
+            <p className="text-xs text-gray-600 mb-6">
               Define exactly 3 milestones. The sum of release amounts should
               equal your funding goal.
             </p>
@@ -286,13 +286,13 @@ export default function CreateIntent() {
               {milestones.map((milestone, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-xl border border-white/[0.06] bg-white/[0.01]"
+                  className="p-5 rounded-xl border border-gray-200 bg-orange-50/30"
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 text-sm font-bold">
+                    <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 text-sm font-bold">
                       {idx + 1}
                     </div>
-                    <h3 className="text-sm font-semibold text-white">
+                    <h3 className="text-sm font-semibold text-gray-900">
                       Milestone {idx + 1}
                     </h3>
                   </div>
@@ -300,7 +300,7 @@ export default function CreateIntent() {
                   <div className="space-y-4">
                     {/* Objective */}
                     <div>
-                      <label className="block text-xs font-medium text-white/60 mb-1.5 flex items-center gap-1.5">
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
                         <Target className="w-3 h-3" />
                         Objective
                       </label>
@@ -311,7 +311,7 @@ export default function CreateIntent() {
                         onChange={(e) =>
                           updateMilestone(idx, "objective", e.target.value)
                         }
-                        className="w-full px-3 py-2.5 rounded-lg bg-white/[0.02] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                        className="w-full px-3 py-2.5 rounded-lg bg-white border border-gray-200 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                         placeholder="What will be achieved in this milestone?"
                       />
                     </div>
@@ -319,7 +319,7 @@ export default function CreateIntent() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* EST Time */}
                       <div>
-                        <label className="block text-xs font-medium text-white/60 mb-1.5 flex items-center gap-1.5">
+                        <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
                           <Clock className="w-3 h-3" />
                           Estimated Time
                         </label>
@@ -330,14 +330,14 @@ export default function CreateIntent() {
                           onChange={(e) =>
                             updateMilestone(idx, "estTime", e.target.value)
                           }
-                          className="w-full px-3 py-2.5 rounded-lg bg-white/[0.02] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                          className="w-full px-3 py-2.5 rounded-lg bg-white border border-gray-200 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                           placeholder="e.g., 3 months"
                         />
                       </div>
 
                       {/* Release Amount */}
                       <div>
-                        <label className="block text-xs font-medium text-white/60 mb-1.5 flex items-center gap-1.5">
+                        <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
                           <Coins className="w-3 h-3" />
                           Release Amount (USDC)
                         </label>
@@ -353,7 +353,7 @@ export default function CreateIntent() {
                               e.target.value
                             )
                           }
-                          className="w-full px-3 py-2.5 rounded-lg bg-white/[0.02] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                          className="w-full px-3 py-2.5 rounded-lg bg-white border border-gray-200 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all"
                           placeholder="15000"
                         />
                       </div>
@@ -361,7 +361,7 @@ export default function CreateIntent() {
 
                     {/* Verification Criteria */}
                     <div>
-                      <label className="block text-xs font-medium text-white/60 mb-1.5 flex items-center gap-1.5">
+                      <label className="block text-xs font-medium text-gray-600 mb-1.5 flex items-center gap-1.5">
                         <CheckSquare className="w-3 h-3" />
                         Verification Criteria
                       </label>
@@ -376,7 +376,7 @@ export default function CreateIntent() {
                           )
                         }
                         rows={2}
-                        className="w-full px-3 py-2.5 rounded-lg bg-white/[0.02] border border-white/[0.08] text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                        className="w-full px-3 py-2.5 rounded-lg bg-white border border-gray-200 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition-all resize-none"
                         placeholder="How will completion be verified?"
                       />
                     </div>
@@ -387,9 +387,9 @@ export default function CreateIntent() {
 
             {/* Milestone sum hint */}
             {fundingGoal && (
-              <div className="mt-4 p-3 rounded-lg bg-white/[0.02] border border-white/[0.06]">
+              <div className="mt-4 p-3 rounded-lg bg-orange-50 border border-orange-100">
                 <div className="flex justify-between text-xs">
-                  <span className="text-white/40">
+                  <span className="text-gray-600">
                     Sum of release amounts:
                   </span>
                   <span
@@ -398,8 +398,8 @@ export default function CreateIntent() {
                         (sum, m) => sum + (parseFloat(m.releaseAmountUSDC) || 0),
                         0
                       ) === parseFloat(fundingGoal)
-                        ? "text-green-400"
-                        : "text-yellow-400"
+                        ? "text-emerald-600"
+                        : "text-amber-600"
                     }`}
                   >
                     $
@@ -420,7 +420,7 @@ export default function CreateIntent() {
           <button
             type="submit"
             disabled={!isFormValid()}
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full py-4 rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 text-white font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-orange-200 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             <ShieldCheck className="w-5 h-5" />
             Submit to AI Gatekeeper

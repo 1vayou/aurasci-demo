@@ -18,17 +18,17 @@ function formatTime(timestamp: number): string {
 function typeColor(type: string): string {
   switch (type) {
     case "patronage":
-      return "text-yellow-400";
+      return "text-amber-600";
     case "proof_submitted":
-      return "text-blue-400";
+      return "text-orange-500";
     case "ai_verified":
-      return "text-green-400";
+      return "text-emerald-600";
     case "intent_published":
-      return "text-cyan-400";
+      return "text-sky-600";
     case "milestone_unlocked":
-      return "text-purple-400";
+      return "text-violet-600";
     default:
-      return "text-white/60";
+      return "text-gray-600";
   }
 }
 
@@ -55,19 +55,19 @@ export default function ActivityFeed({
 
   return (
     <div
-      className={`rounded-xl border border-green-500/10 bg-[#040a06]/90 backdrop-blur-sm overflow-hidden crt-scanlines crt-glow ${
+      className={`rounded-xl border border-gray-200 bg-white overflow-hidden crt-scanlines crt-glow aura-shadow ${
         compact ? "" : "h-full flex flex-col"
       }`}
     >
       {/* Terminal header */}
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-green-500/10 bg-green-500/[0.03]">
-        <Terminal className="w-3.5 h-3.5 text-green-500/60" />
-        <span className="text-[10px] font-mono font-bold text-green-500/70 uppercase tracking-[0.15em]">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-orange-100 bg-orange-50">
+        <Terminal className="w-3.5 h-3.5 text-orange-500" />
+        <span className="text-[10px] font-mono font-bold text-orange-600 uppercase tracking-[0.15em]">
           Live Activity Feed
         </span>
         <span className="ml-auto flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-          <span className="text-[9px] font-mono text-green-500/50">LIVE</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[9px] font-mono text-emerald-600">LIVE</span>
         </span>
       </div>
 
@@ -80,25 +80,25 @@ export default function ActivityFeed({
       >
         {displayLogs.length === 0 ? (
           <div className="px-4 py-6 text-center">
-            <span className="text-[11px] text-green-500/30">
+            <span className="text-[11px] text-gray-400">
               Awaiting activity...
             </span>
           </div>
         ) : (
-          <div className="divide-y divide-green-500/[0.06]">
+          <div className="divide-y divide-gray-100">
             {displayLogs.map((log, idx) => (
               <div
                 key={log.id}
                 onClick={() =>
                   log.intentId && router.push(`/intent/${log.intentId}`)
                 }
-                className={`px-4 py-2 cursor-pointer hover:bg-green-500/[0.04] transition-colors ${
+                className={`px-4 py-2 cursor-pointer hover:bg-orange-50 transition-colors ${
                   idx === 0 ? "animate-flash" : ""
                 }`}
               >
                 <div className="flex items-start gap-2">
                   {/* Timestamp */}
-                  <span className="text-[10px] text-green-500/30 flex-shrink-0 tabular-nums leading-5">
+                  <span className="text-[10px] text-gray-400 flex-shrink-0 tabular-nums leading-5">
                     {formatTime(log.timestamp)}
                   </span>
 
@@ -116,7 +116,7 @@ export default function ActivityFeed({
 
         {/* Terminal cursor blink */}
         <div className="px-4 py-2">
-          <span className="text-green-500/40 text-[11px] font-mono">
+          <span className="text-orange-500/60 text-[11px] font-mono">
             {">"}{" "}
             <span className="animate-pulse">▊</span>
           </span>
