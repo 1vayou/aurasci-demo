@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,12 +20,14 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-orange-500 to-emerald-400 flex items-center justify-center shadow-[0_8px_24px_rgba(249,115,22,0.22)]">
-                <span className="text-white font-bold text-sm">A</span>
-              </div>
-              <span className="text-lg font-semibold tracking-tight text-gray-900">
-                Aura<span className="text-orange-500">Sci</span>
-              </span>
+              <Image
+                src="/images/logo-silver.png"
+                alt="AuraSci"
+                width={140}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
             </a>
 
             {/* Nav links */}
