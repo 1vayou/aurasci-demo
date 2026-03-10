@@ -43,7 +43,7 @@ function ScoreRing({
           r={r}
           fill="none"
           strokeWidth={8}
-          className="score-ring-bg"
+          className="stroke-gray-200"
         />
         <circle
           cx={size / 2}
@@ -54,12 +54,12 @@ function ScoreRing({
           strokeLinecap="round"
           strokeDasharray={circ}
           strokeDashoffset={offset}
-          className="score-ring-fill"
+          className="stroke-orange-500"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <span className="text-2xl sm:text-3xl font-bold text-white">
-          ${Math.round(score).toLocaleString()}
+        <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+          {Math.round(score)}
         </span>
       </div>
     </div>
@@ -90,7 +90,7 @@ function FundingRing({
           r={r}
           fill="none"
           strokeWidth={10}
-          className="score-ring-bg"
+          className="stroke-gray-200"
         />
         <circle
           cx={size / 2}
@@ -101,7 +101,7 @@ function FundingRing({
           strokeLinecap="round"
           strokeDasharray={circ}
           strokeDashoffset={offset}
-          className="score-ring-fill"
+          className="stroke-orange-500"
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -133,74 +133,41 @@ function ResourceIcon({ type }: { type: ResourceAsk["type"] }) {
 /* ---- Milestone timeline step ---- */
 function TimelineStep({
   milestone,
-  isFirst,
-  isLast,
+  status,
 }: {
-  milestone: Milestone;
-  isFirst: boolean;
-  isLast: boolean;
+  milestone: { label: string; sublabel: string };
+  status: "completed" | "active" | "locked";
 }) {
-  const isActive = milestone.status === "in_progress";
-  const isDone =
-    milestone.status === "ai_verified" || milestone.status === "released";
-  const isProof = milestone.status === "proof_submitted";
-
   return (
-    <div className="flex flex-col items-center flex-1 min-w-0">
-      {/* Dot + connectors */}
-      <div className="flex items-center w-full">
-        {/* Left connector */}
-        {!isFirst && (
-          <div
-            className={`flex-1 h-[2px] ${
-              isDone ? "bg-green-500" : "bg-white/10"
-            }`}
-          />
+    <div className="flex flex-col items-center gap-2 z-10 relative min-w-[64px]">
+      <div className="relative">
+        {status === "active" && (
+          <div className="absolute inset-0 rounded-full bg-orange-200/60 blur-md animate-pulse scale-125" />
         )}
-        {isFirst && <div className="flex-1" />}
 
-        {/* Dot */}
         <div
-          className={`timeline-dot w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-            isDone
-              ? "bg-green-500 active"
-              : isActive || isProof
-              ? "bg-green-500/20 border-2 border-green-500 active"
-              : "bg-white/[0.06] border border-white/20"
-          }`}
+          className={[
+            "relative w-9 h-9 rounded-full flex items-center justify-center bg-white transition-all duration-300",
+            status === "completed"
+              ? "border-2 border-emerald-400 text-emerald-500 shadow-[0_0_12px_rgba(52,211,153,0.18)]"
+              : status === "active"
+              ? "border-2 border-orange-500 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.28)]"
+              : "border border-gray-200 bg-gray-50 text-gray-400",
+          ].join(" ")}
         >
-          {isDone ? (
-            <CheckCircle2 className="w-4 h-4 text-white" />
-          ) : isActive ? (
-            <Clock className="w-3.5 h-3.5 text-green-400" />
-          ) : isProof ? (
-            <Loader2 className="w-3.5 h-3.5 text-green-400 animate-spin" />
+          {status === "completed" ? (
+            <CheckCircle2 className="w-4 h-4" />
+          ) : status === "active" ? (
+            <Clock className="w-4 h-4" />
           ) : (
-            <Lock className="w-3 h-3 text-white/30" />
+            <Lock className="w-3.5 h-3.5" />
           )}
         </div>
-
-        {/* Right connector */}
-        {!isLast && (
-          <div
-            className={`flex-1 h-[2px] ${
-              isDone ? "bg-green-500" : "bg-white/10"
-            }`}
-          />
-        )}
-        {isLast && <div className="flex-1" />}
       </div>
 
-      {/* Label */}
-      <div className="mt-2 text-center">
-        <div
-          className={`text-xs font-bold ${
-            isDone || isActive || isProof ? "text-white" : "text-white/40"
-          }`}
-        >
-          {milestone.label}
-        </div>
-        <div className="text-[10px] text-white/30">{milestone.sublabel}</div>
+      <div className="text-center leading-tight">
+        <div className="text-xs font-semibold text-gray-700">{milestone.label}</div>
+        <div className="text-[10px] text-gray-500">{milestone.sublabel}</div>
       </div>
     </div>
   );
@@ -231,17 +198,17 @@ export default function IntentDetail() {
 
   if (!intent) {
     return (
-      <div className="min-h-screen hero-gradient grid-pattern flex items-center justify-center px-6">
+      <div className="min-h-screen bg-white flex items-center justify-center px-6">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-white mb-2">
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">
             Intent Not Found
           </h2>
-          <p className="text-white/40 text-sm mb-6">
+          <p className="text-gray-500 text-sm mb-6">
             This intent may have been removed or doesn&apos;t exist.
           </p>
           <button
             onClick={() => router.push("/market")}
-            className="px-6 py-3 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium hover:bg-green-500/20 transition-all"
+            className="px-6 py-3 rounded-xl bg-orange-50 border border-orange-200 text-orange-600 text-sm font-medium hover:bg-orange-100 transition-all"
           >
             Back to Market
           </button>
@@ -447,43 +414,46 @@ export default function IntentDetail() {
 
             {/* ===== MILESTONE TIMELINE ===== */}
             <div className="mt-8 pt-6 border-t border-gray-100">
-              <div className="flex items-center w-full">
-                {allSteps.map((step, idx) => (
-                  <TimelineStep
-                    key={step.id}
-                    milestone={step as Milestone}
-                    isFirst={idx === 0}
-                    isLast={idx === allSteps.length - 1}
-                  />
-                ))}
+              <div className="relative flex items-center justify-between w-full">
+                {/* Background connecting line */}
+                <div className="absolute left-0 right-0 top-[18px] h-[2px] bg-gray-200 z-0" />
+
+                {/* M0 */}
+                <TimelineStep
+                  milestone={{ label: "M0", sublabel: "Fundraising" }}
+                  status={
+                    intent.escrowedAmountUSDC >= intent.fundingGoalUSDC
+                      ? "completed"
+                      : "active"
+                  }
+                />
+
+                {/* M1, M2, M3 */}
+                {intent.milestones.map((ms) => {
+                  const isDone =
+                    ms.status === "ai_verified" || ms.status === "released";
+                  const isActive =
+                    ms.status === "in_progress" || ms.status === "proof_submitted";
+                  return (
+                    <TimelineStep
+                      key={ms.id}
+                      milestone={{ label: ms.label, sublabel: ms.sublabel }}
+                      status={isDone ? "completed" : isActive ? "active" : "locked"}
+                    />
+                  );
+                })}
+
                 {/* R (Result) */}
-                <div className="flex flex-col items-center flex-1 min-w-0">
-                  <div className="flex items-center w-full">
-                    <div className="flex-1 h-[2px] bg-gray-200" />
-                    <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[10px] text-gray-400">●</span>
-                    </div>
-                    <div className="flex-1 h-[2px] bg-gray-200" />
-                  </div>
-                  <div className="mt-2 text-center">
-                    <div className="text-xs font-bold text-gray-500">R</div>
-                    <div className="text-[10px] text-gray-400">Result</div>
-                  </div>
-                </div>
+                <TimelineStep
+                  milestone={{ label: "R", sublabel: "Result" }}
+                  status="locked"
+                />
+
                 {/* SSR (Award) */}
-                <div className="flex flex-col items-center flex-1 min-w-0">
-                  <div className="flex items-center w-full">
-                    <div className="flex-1 h-[2px] bg-gray-200" />
-                    <div className="w-8 h-8 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0">
-                      <span className="text-[10px] text-gray-400">★</span>
-                    </div>
-                    <div className="flex-1" />
-                  </div>
-                  <div className="mt-2 text-center">
-                    <div className="text-xs font-bold text-gray-500">SSR</div>
-                    <div className="text-[10px] text-gray-400">Award</div>
-                  </div>
-                </div>
+                <TimelineStep
+                  milestone={{ label: "SSR", sublabel: "Award" }}
+                  status="locked"
+                />
               </div>
             </div>
 
